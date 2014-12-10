@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("vatlidator")]
-[assembly: AssemblyDescription("Μια εφαρμογή ελέγχου εγκυρότητας ΑΦΜ και λήψης πληροφοριών από τη ΒΔ της ΓΓΠΣ")]
+[assembly: AssemblyDescription("Μια εφαρμογή ελέγχου εγκυρότητας ΑΦΜ και λήψης πληροφοριών από τη βάση δεδομένων του Σύστηματος Ανταλλαγής Πληροφοριών ΦΠΑ της Ευρωπαϊκής Επιτροπής")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Petros Kyladitis")]
 [assembly: AssemblyProduct("Vatlidator")]
-[assembly: AssemblyCopyright("Copyright 2011-2013, Petros Kyladitis")]
+[assembly: AssemblyCopyright("Copyright 2011-2014, Petros Kyladitis")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,4 +28,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyVersion("2.1.*")]

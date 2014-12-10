@@ -1,6 +1,6 @@
 ﻿#region about this file
 /* MainForm class, this is part of Vatlidator program
- * Copyright (c) 2011-2013, Petros Kyladitis
+ * Copyright (c) 2011-2014, Petros Kyladitis
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,17 +21,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO ;
 using Multipetros.Validation ;
-using Multipetros.WebServices ;
+//using Multipetros.WebServices ;
+using System.Net ;
+using System.Text ;
 
 namespace Vatlidator{
-	/// <summary>
-	/// 
-	/// </summary>
 	public partial class MainForm : Form{
 		
-		/// <summary>
-		/// 
-		/// </summary>
 		public MainForm(){
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -39,6 +35,7 @@ namespace Vatlidator{
 			InitializeComponent();
 		}
 		
+		private WebClient client = new WebClient() ;
 		private readonly string HTML_FILENAME = "vatlidator.html" ;
 		private readonly string CSS_FILENAME = "vatlidator.css" ;
 		private readonly string JQUERY_FILENAME = "jquery-1.9.1.min.js" ;
@@ -84,7 +81,7 @@ namespace Vatlidator{
 			//if vatin is not valid (see if pictureBoxValid is visible to avoid string parsing and validation)
 			//inform user that can't continue and exit
 			if(pictureBoxValid.Visible == false){
-				MessageBox.Show("Το ΑΦΜ που έχετε εισάγει δεν είναι έγκυρο! Πρέπει να εισάγετε ένα έγκυρο ΑΦΜ για να μπορέσουν να ληφθούν πληροφορίες γι' αυτό από τη βάση δεδομένων της ΓΓΠΣ","Δεν είναι δυνατή η λήψη πληροφοριών!", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
+				MessageBox.Show("Το ΑΦΜ που έχετε εισάγει δεν είναι έγκυρο! Πρέπει να εισάγετε ένα έγκυρο ΑΦΜ για να μπορέσουν να ληφθούν πληροφορίες γι' αυτό από τη βάση δεδομένων του Σύστηματος Ανταλλαγής Πληροφοριών ΦΠΑ της Ευρωπαϊκής Επιτροπής.","Δεν είναι δυνατή η λήψη πληροφοριών!", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
 				return ;
 			}
 
@@ -100,8 +97,8 @@ namespace Vatlidator{
 				hideToolStripMenuItem.Visible = true ;
 				this.MaximizeBox = true ;
 				this.FormBorderStyle = FormBorderStyle.Sizable ;
-				this.Width = 640 ; 
-				this.Height = 480 ;				
+				this.Width = 500 ; 
+				this.Height = 380 ;				
 			}
 			
 			//if current vatin is the same with the previous one exit, else download data
@@ -112,10 +109,11 @@ namespace Vatlidator{
 			
 			//create new AfmInfo object, download data, make an html file and present it to user
 			//on any exception, create html file with the exception's message
-			AfmInfo vatin ;
+			//AfmInfo vatin ; //don't use obsolete object anymore
 			try{
-				vatin = new AfmInfo(textBoxVat.Text) ;
-				File.WriteAllText(htmlFilePath, CreatePage(vatin)) ;
+				//vatin = new AfmInfo(textBoxVat.Text) ;  //don't use obsolete object anymore
+				//File.WriteAllText(htmlFilePath, CreatePage(vatin)) ;  //don't use obsolete object anymore
+				File.WriteAllText(htmlFilePath, CreatePage(textBoxVat.Text)) ;
 				webBrowser.Navigate(htmlFilePath) ;
 			}catch(Exception exc){
 				File.WriteAllText(htmlFilePath, CreatePage("<div style=\"color: red;\">" + exc.Message + "</div>")) ;
@@ -138,6 +136,53 @@ namespace Vatlidator{
 			Application.Exit() ;
 		}
 		
+		//create the htmlpage using valid.eu service
+		private string CreatePage(string vat){			
+			string html = htmlHeader + "<table cellpading=\"4\" cellspacing=\"4\">" ;
+			string clientResponse = null;
+			try{
+				clientResponse = client.DownloadString("http://vatid.eu/check/EL/" + vat) ;
+			}catch(Exception){ /* do nothing, let clientRespone null, and operate it by this method */ }
+			string companyName = null ;
+			string companyAddress = null ;
+			if(clientResponse != null){
+				#region convert data to utf-8 - start
+				byte[] clientResponseBytes = Encoding.Default.GetBytes(clientResponse) ;
+				clientResponse = Encoding.UTF8.GetString(clientResponseBytes) ;
+				#endregion
+				companyName = MineData(clientResponse, "<name><![CDATA[", "]]></name>") ;
+				companyAddress = MineData(clientResponse, "<address><![CDATA[", "]]></address>") ;
+				
+				if(companyName.Trim() == ""){
+					html += "<div style=\"color: red;\">Δεν μπόρεσαν να ανακτοιθούν στοιχεία γι' αυτό το ΑΦΜ.<br>Δεν ανήκει σε επιτηδευματία ή νομικό πρόσωπο, ή δεν είναι καταχωρημένο ακόμα.</div>" ; 	
+				}else{
+					string[] companyTitle = companyName.Replace("||","|").Split('|') ;
+					html += AddRow("Επωνυμία", companyTitle[0]) ;
+					if(companyTitle.Length > 1){
+						html += AddRow("Διακρ. τίτλος", companyTitle[1]) ;
+					}
+					html +=AddRow("Διεύθυνση", companyAddress) ;
+				}
+			}else{
+				html += "<div style=\"color: red;\">Σφάλμα επικοινωνίας με τη βάση δεδομένων!</div>" ;
+			}
+			html += "</table>" + htmlFooter ;
+			return html ;
+		}
+		
+		//mining data from valid.eu xml response
+		private string MineData(string htmlData, string startTag, string endTag){
+			int start = htmlData.IndexOf(startTag) + startTag.Length ;
+			int end = htmlData.IndexOf(endTag, start) ;
+			string minedData = "" ;
+			try {
+				minedData = htmlData.Substring(start, end - start) ;
+			} catch (Exception) { /* do nothing, just go next and return an empty string */ }			
+			return minedData ;
+		}
+		
+		#region obsolete AfmInfo method call
+		/*
 		//create the htmlpage from AfmInfo object data
 		private string CreatePage(AfmInfo vatin){
 			string html = htmlHeader + "<table cellpading=\"4\" cellspacing=\"4\">" ;
@@ -267,11 +312,13 @@ namespace Vatlidator{
 			return html ;
 		}
 		
+		
 		//create html page contains the message arg
 		private string CreatePage(string message){
 			string html = htmlHeader + message + htmlFooter ;
 			return html ;
-		}
+		}*/
+		#endregion
 		
 		//create an html table row with 2 columns
 		private string AddRow(string col1, string col2){
@@ -303,8 +350,8 @@ namespace Vatlidator{
 			
 			//set tooltips
 			ToolTip tip = new ToolTip() ;
-			tip.SetToolTip(textBoxVat, "Εισάγετε τον αριθμό του ΑΦΜ, για να ελέγξετε την εγκυρότητά του.\nΓια πληροφορίες κατόχου πατήστε enter ή το κουμπί στα δεξιά") ;
-			tip.SetToolTip(buttonDownloadInfo, "Λήψη πληροφοριών για τον κάτοχο του ΑΦΜ, από τη βάση δεδομένων της ΓΓΠΣ,\n(στην περίπτωση που αυτός είναι επιτηδευματίας ή νομικό πρόσωπο).") ;
+			tip.SetToolTip(textBoxVat, "Εισάγετε τον αριθμό του ΑΦΜ, για να ελέγξετε την εγκυρότητά του.\nΓια πληροφορίες κατόχου πατήστε enter ή το κουμπί στα δεξιά.") ;
+			tip.SetToolTip(buttonDownloadInfo, "Λήψη πληροφοριών για τον κάτοχο του ΑΦΜ, από τη βάση δεδομένων\nτου Σύστηματος Ανταλλαγής Πληροφοριών ΦΠΑ της Ευρωπαϊκής Επιτροπής.") ;
 		}
 	}
 }

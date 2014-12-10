@@ -54,6 +54,7 @@ namespace Vatlidator
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelCredits = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.linkLabelMultipetros = new System.Windows.Forms.LinkLabel();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -72,16 +73,16 @@ namespace Vatlidator
 			this.labelAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
 			this.labelAbout.Location = new System.Drawing.Point(118, 13);
 			this.labelAbout.Name = "labelAbout";
-			this.labelAbout.Size = new System.Drawing.Size(328, 58);
+			this.labelAbout.Size = new System.Drawing.Size(328, 41);
 			this.labelAbout.TabIndex = 1;
-			this.labelAbout.Text = "Vatlidator - Έκδοση 2.0\r\n(c) Copyright 2011 - 2013, Petros Kyladitis";
+			this.labelAbout.Text = "Vatlidator - Έκδοση 2.1\r\nCopyright (c) 2011 - 2014, Petros Kyladitis";
 			this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// labelInfo
 			// 
-			this.labelInfo.Location = new System.Drawing.Point(16, 134);
+			this.labelInfo.Location = new System.Drawing.Point(16, 135);
 			this.labelInfo.Name = "labelInfo";
-			this.labelInfo.Size = new System.Drawing.Size(430, 127);
+			this.labelInfo.Size = new System.Drawing.Size(430, 139);
 			this.labelInfo.TabIndex = 2;
 			this.labelInfo.Text = resources.GetString("labelInfo.Text");
 			// 
@@ -89,12 +90,12 @@ namespace Vatlidator
 			// 
 			this.textBoxLiscense.BackColor = System.Drawing.SystemColors.Control;
 			this.textBoxLiscense.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBoxLiscense.Location = new System.Drawing.Point(16, 264);
+			this.textBoxLiscense.Location = new System.Drawing.Point(16, 277);
 			this.textBoxLiscense.Multiline = true;
 			this.textBoxLiscense.Name = "textBoxLiscense";
 			this.textBoxLiscense.ReadOnly = true;
 			this.textBoxLiscense.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBoxLiscense.Size = new System.Drawing.Size(428, 118);
+			this.textBoxLiscense.Size = new System.Drawing.Size(428, 105);
 			this.textBoxLiscense.TabIndex = 3;
 			this.textBoxLiscense.TabStop = false;
 			this.textBoxLiscense.Text = resources.GetString("textBoxLiscense.Text");
@@ -136,12 +137,23 @@ namespace Vatlidator
 			this.label2.TabIndex = 8;
 			this.label2.Text = "label2";
 			// 
+			// linkLabelMultipetros
+			// 
+			this.linkLabelMultipetros.Location = new System.Drawing.Point(118, 54);
+			this.linkLabelMultipetros.Name = "linkLabelMultipetros";
+			this.linkLabelMultipetros.Size = new System.Drawing.Size(326, 17);
+			this.linkLabelMultipetros.TabIndex = 9;
+			this.linkLabelMultipetros.TabStop = true;
+			this.linkLabelMultipetros.Text = "http://www.multipetros.gr/";
+			this.linkLabelMultipetros.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelMultipetrosLinkClicked);
+			// 
 			// AboutForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.ClientSize = new System.Drawing.Size(464, 437);
+			this.Controls.Add(this.linkLabelMultipetros);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.labelCredits);
 			this.Controls.Add(this.label1);
@@ -162,6 +174,7 @@ namespace Vatlidator
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.LinkLabel linkLabelMultipetros;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label labelCredits;
 		private System.Windows.Forms.Label label1;

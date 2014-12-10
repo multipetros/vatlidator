@@ -1,6 +1,6 @@
 ﻿#region about this file
 /* AboutForm class, this is part of Vatlidator program
- * Copyright (c) 2011-2013, Petros Kyladitis
+ * Copyright (c) 2011-2014, Petros Kyladitis
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO ;
+using System.Diagnostics;
 
 namespace Vatlidator{
 	/// <summary>
@@ -37,13 +38,24 @@ namespace Vatlidator{
 		}
 		
 		void AboutFormLoad(object sender, EventArgs e){
+			//try to read license from the file and load the text the textbox.
 			try{
 				textBoxLiscense.Text += File.ReadAllText(Path.GetDirectoryName(Application.ExecutablePath) + "\\License.txt") ;
 			}catch(Exception){ /* do nothing */ }
+			
+			//add linkData to the linkLabel
+			LinkLabel.Link link = new LinkLabel.Link() ;
+			link.LinkData = "http://www.multipetros.gr/" ;
+			linkLabelMultipetros.Links.Add(link) ;
 		}
 		
 		void ButtonOKClick(object sender, EventArgs e){
 			this.DialogResult = DialogResult.OK ;
+		}
+		
+		void LinkLabelMultipetrosLinkClicked(object sender, LinkLabelLinkClickedEventArgs e){
+			//open the default browser and navigate to the home page
+			Process.Start(e.Link.LinkData.ToString()) ;
 		}
 	}
 }

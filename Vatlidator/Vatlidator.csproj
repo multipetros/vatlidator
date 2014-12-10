@@ -47,12 +47,6 @@
     <Reference Include="Multipetros.Validation">
       <HintPath>libs\Multipetros.Validation.dll</HintPath>
     </Reference>
-    <Reference Include="Multipetros.WebServices">
-      <HintPath>libs\Multipetros.WebServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Multipetros.WebServices.XmlSerializers">
-      <HintPath>libs\Multipetros.WebServices.XmlSerializers.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
