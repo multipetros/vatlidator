@@ -6,7 +6,7 @@ Copyright (C) 2011-2017, Petros Kyladitis
 
 --- 
 
-##<a name="en"></a> Description  
+## <a name="en"></a> Description  
 A tool for validating and retrieve VAT ID info from the EU VIES service
   
 For updates and more info see at <http://multipetros.gr/>
@@ -33,7 +33,7 @@ If you think that this program is helpful for you and you are willing to support
 
 ---
 
-##<a name="el"></a> Περιγραφή
+## <a name="el"></a> Περιγραφή
 Ένα εργαλείο ελέγχου και λήψης πληροφοριών των ευρωπαϊκων ΑΦΜ, κάνοντας χρήση της υπηρεσίας VIES της ΕΕ.
   
 Για περισσότερες πληροφορίες και ενημερώσεις δείτε στον ιστότοπο <http://multipetros.gr/>
