@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 # SharpDevelop 3.2.1.6466
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vatlidator", "vatlidator\Vatlidator.csproj", "{15DCBE68-078B-4657-94D1-CE1C218B18D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vatlidator", "Vatlidator\Vatlidator.csproj", "{527AD564-2AC5-4072-9921-A8E27299F18D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,9 +10,9 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{15DCBE68-078B-4657-94D1-CE1C218B18D5}.Debug|x86.Build.0 = Debug|x86
-		{15DCBE68-078B-4657-94D1-CE1C218B18D5}.Debug|x86.ActiveCfg = Debug|x86
-		{15DCBE68-078B-4657-94D1-CE1C218B18D5}.Release|x86.Build.0 = Release|x86
-		{15DCBE68-078B-4657-94D1-CE1C218B18D5}.Release|x86.ActiveCfg = Release|x86
+		{527AD564-2AC5-4072-9921-A8E27299F18D}.Debug|x86.Build.0 = Debug|x86
+		{527AD564-2AC5-4072-9921-A8E27299F18D}.Debug|x86.ActiveCfg = Debug|x86
+		{527AD564-2AC5-4072-9921-A8E27299F18D}.Release|x86.Build.0 = Release|x86
+		{527AD564-2AC5-4072-9921-A8E27299F18D}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 EndGlobal

@@ -1,20 +1,9 @@
-﻿#region about this file
-/* MainForm.Designer class, this is part of Vatlidator program
- * Copyright (c) 2011-2013, Petros Kyladitis
+﻿/* Vatlidator: Main form - Designer class
+ * (c) 2011-2017, Petros Kyladitis <http://www.multipetros.gr>
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version. 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details. 
- * You should see a copy of the GNU General Public License
- * above.  If not, see <http://www.gnu.org/licenses/>
+ * This is free software distributed under the GNU GPL 3, for license details see at license.txt 
+ * file, distributed with this program source, or see at <http://www.gnu.org/licenses/> 
  */
- #endregion
- 
 namespace Vatlidator
 {
 	partial class MainForm
@@ -46,227 +35,208 @@ namespace Vatlidator
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.splitContainer = new System.Windows.Forms.SplitContainer();
-			this.buttonDownloadInfo = new System.Windows.Forms.Button();
-			this.pictureBoxInsert = new System.Windows.Forms.PictureBox();
-			this.labelValidation = new System.Windows.Forms.Label();
-			this.pictureBoxValid = new System.Windows.Forms.PictureBox();
-			this.pictureBoxInvalid = new System.Windows.Forms.PictureBox();
-			this.textBoxVat = new System.Windows.Forms.TextBox();
+			this.comboBoxCountry = new System.Windows.Forms.ComboBox();
+			this.textBoxVatID = new System.Windows.Forms.TextBox();
 			this.menuStripMain = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.greekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.webBrowser = new System.Windows.Forms.WebBrowser();
-			this.splitContainer.Panel1.SuspendLayout();
-			this.splitContainer.Panel2.SuspendLayout();
-			this.splitContainer.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxInsert)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxValid)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxInvalid)).BeginInit();
+			this.buttonValidate = new System.Windows.Forms.Button();
+			this.labelLine = new System.Windows.Forms.Label();
+			this.textBoxName = new System.Windows.Forms.TextBox();
+			this.textBoxAddress = new System.Windows.Forms.TextBox();
+			this.labelName = new System.Windows.Forms.Label();
+			this.labelAddress = new System.Windows.Forms.Label();
+			this.labelValid = new System.Windows.Forms.Label();
 			this.menuStripMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// splitContainer
+			// comboBoxCountry
 			// 
-			this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-			this.splitContainer.IsSplitterFixed = true;
-			this.splitContainer.Location = new System.Drawing.Point(0, 0);
-			this.splitContainer.MinimumSize = new System.Drawing.Size(200, 115);
-			this.splitContainer.Name = "splitContainer";
-			this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			this.comboBoxCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxCountry.FormattingEnabled = true;
+			this.comboBoxCountry.Location = new System.Drawing.Point(11, 38);
+			this.comboBoxCountry.Name = "comboBoxCountry";
+			this.comboBoxCountry.Size = new System.Drawing.Size(48, 21);
+			this.comboBoxCountry.TabIndex = 0;
 			// 
-			// splitContainer.Panel1
+			// textBoxVatID
 			// 
-			this.splitContainer.Panel1.Controls.Add(this.buttonDownloadInfo);
-			this.splitContainer.Panel1.Controls.Add(this.pictureBoxInsert);
-			this.splitContainer.Panel1.Controls.Add(this.labelValidation);
-			this.splitContainer.Panel1.Controls.Add(this.pictureBoxValid);
-			this.splitContainer.Panel1.Controls.Add(this.pictureBoxInvalid);
-			this.splitContainer.Panel1.Controls.Add(this.textBoxVat);
-			this.splitContainer.Panel1.Controls.Add(this.menuStripMain);
-			this.splitContainer.Panel1MinSize = 0;
-			// 
-			// splitContainer.Panel2
-			// 
-			this.splitContainer.Panel2.Controls.Add(this.webBrowser);
-			this.splitContainer.Panel2MinSize = 0;
-			this.splitContainer.Size = new System.Drawing.Size(230, 115);
-			this.splitContainer.SplitterDistance = 103;
-			this.splitContainer.TabIndex = 8;
-			// 
-			// buttonDownloadInfo
-			// 
-			this.buttonDownloadInfo.Image = ((System.Drawing.Image)(resources.GetObject("buttonDownloadInfo.Image")));
-			this.buttonDownloadInfo.Location = new System.Drawing.Point(179, 65);
-			this.buttonDownloadInfo.Name = "buttonDownloadInfo";
-			this.buttonDownloadInfo.Size = new System.Drawing.Size(39, 30);
-			this.buttonDownloadInfo.TabIndex = 8;
-			this.buttonDownloadInfo.UseVisualStyleBackColor = true;
-			this.buttonDownloadInfo.Click += new System.EventHandler(this.ButtonDownloadInfoClick);
-			// 
-			// pictureBoxInsert
-			// 
-			this.pictureBoxInsert.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxInsert.Image")));
-			this.pictureBoxInsert.Location = new System.Drawing.Point(12, 27);
-			this.pictureBoxInsert.Name = "pictureBoxInsert";
-			this.pictureBoxInsert.Size = new System.Drawing.Size(32, 32);
-			this.pictureBoxInsert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBoxInsert.TabIndex = 6;
-			this.pictureBoxInsert.TabStop = false;
-			// 
-			// labelValidation
-			// 
-			this.labelValidation.AutoSize = true;
-			this.labelValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-			this.labelValidation.Location = new System.Drawing.Point(46, 34);
-			this.labelValidation.Name = "labelValidation";
-			this.labelValidation.Size = new System.Drawing.Size(150, 25);
-			this.labelValidation.TabIndex = 0;
-			this.labelValidation.Text = "Εισάγετε ΑΦΜ";
-			this.labelValidation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// pictureBoxValid
-			// 
-			this.pictureBoxValid.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxValid.Image")));
-			this.pictureBoxValid.Location = new System.Drawing.Point(12, 27);
-			this.pictureBoxValid.Name = "pictureBoxValid";
-			this.pictureBoxValid.Size = new System.Drawing.Size(32, 32);
-			this.pictureBoxValid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBoxValid.TabIndex = 3;
-			this.pictureBoxValid.TabStop = false;
-			this.pictureBoxValid.Visible = false;
-			// 
-			// pictureBoxInvalid
-			// 
-			this.pictureBoxInvalid.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxInvalid.Image")));
-			this.pictureBoxInvalid.Location = new System.Drawing.Point(12, 27);
-			this.pictureBoxInvalid.Name = "pictureBoxInvalid";
-			this.pictureBoxInvalid.Size = new System.Drawing.Size(32, 32);
-			this.pictureBoxInvalid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBoxInvalid.TabIndex = 2;
-			this.pictureBoxInvalid.TabStop = false;
-			this.pictureBoxInvalid.Visible = false;
-			// 
-			// textBoxVat
-			// 
-			this.textBoxVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-			this.textBoxVat.Location = new System.Drawing.Point(12, 65);
-			this.textBoxVat.MaxLength = 9;
-			this.textBoxVat.Name = "textBoxVat";
-			this.textBoxVat.Size = new System.Drawing.Size(161, 30);
-			this.textBoxVat.TabIndex = 1;
-			this.textBoxVat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.textBoxVat.TextChanged += new System.EventHandler(this.TextBoxVatTextChanged);
+			this.textBoxVatID.Location = new System.Drawing.Point(65, 38);
+			this.textBoxVatID.Name = "textBoxVatID";
+			this.textBoxVatID.Size = new System.Drawing.Size(112, 20);
+			this.textBoxVatID.TabIndex = 1;
 			// 
 			// menuStripMain
 			// 
 			this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.fileToolStripMenuItem,
-									this.helpToolStripMenuItem,
-									this.hideToolStripMenuItem});
+									this.languageToolStripMenuItem,
+									this.aboutToolStripMenuItem});
 			this.menuStripMain.Location = new System.Drawing.Point(0, 0);
 			this.menuStripMain.Name = "menuStripMain";
-			this.menuStripMain.ShowItemToolTips = true;
-			this.menuStripMain.Size = new System.Drawing.Size(230, 24);
-			this.menuStripMain.TabIndex = 7;
-			this.menuStripMain.Text = "menuStrip";
+			this.menuStripMain.Size = new System.Drawing.Size(273, 24);
+			this.menuStripMain.TabIndex = 2;
+			this.menuStripMain.Text = "menuStrip1";
 			// 
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-			this.fileToolStripMenuItem.Text = "&Αρχείο";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+			this.fileToolStripMenuItem.Text = "file";
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-			this.exitToolStripMenuItem.Text = "Έ&ξοδος";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+			this.exitToolStripMenuItem.Text = "exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
-			// helpToolStripMenuItem
+			// languageToolStripMenuItem
 			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.aboutToolStripMenuItem});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-			this.helpToolStripMenuItem.Text = "&Βοήθεια";
+			this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.englishToolStripMenuItem,
+									this.greekToolStripMenuItem});
+			this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+			this.languageToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+			this.languageToolStripMenuItem.Text = "language";
+			// 
+			// englishToolStripMenuItem
+			// 
+			this.englishToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("englishToolStripMenuItem.Image")));
+			this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+			this.englishToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+			this.englishToolStripMenuItem.Text = "E&nglish";
+			this.englishToolStripMenuItem.Click += new System.EventHandler(this.EnglishToolStripMenuItemClick);
+			// 
+			// greekToolStripMenuItem
+			// 
+			this.greekToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("greekToolStripMenuItem.Image")));
+			this.greekToolStripMenuItem.Name = "greekToolStripMenuItem";
+			this.greekToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+			this.greekToolStripMenuItem.Text = "Ε&λληνικά";
+			this.greekToolStripMenuItem.Click += new System.EventHandler(this.GreekToolStripMenuItemClick);
 			// 
 			// aboutToolStripMenuItem
 			// 
-			this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-			this.aboutToolStripMenuItem.Text = "&Πληροφορίες";
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+			this.aboutToolStripMenuItem.Text = "about";
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
 			// 
-			// hideToolStripMenuItem
+			// buttonValidate
 			// 
-			this.hideToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.hideToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hideToolStripMenuItem.Image")));
-			this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
-			this.hideToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-			this.hideToolStripMenuItem.ToolTipText = "Απόκρυψη επιπλέον πληροφοριών";
-			this.hideToolStripMenuItem.Click += new System.EventHandler(this.HideToolStripMenuItemClick);
+			this.buttonValidate.Location = new System.Drawing.Point(183, 36);
+			this.buttonValidate.Name = "buttonValidate";
+			this.buttonValidate.Size = new System.Drawing.Size(75, 23);
+			this.buttonValidate.TabIndex = 2;
+			this.buttonValidate.UseVisualStyleBackColor = true;
+			this.buttonValidate.Click += new System.EventHandler(this.ButtonValidateClick);
 			// 
-			// webBrowser
+			// labelLine
 			// 
-			this.webBrowser.AllowWebBrowserDrop = false;
-			this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.webBrowser.Location = new System.Drawing.Point(0, 0);
-			this.webBrowser.Name = "webBrowser";
-			this.webBrowser.Size = new System.Drawing.Size(230, 8);
-			this.webBrowser.TabIndex = 0;
+			this.labelLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.labelLine.Location = new System.Drawing.Point(12, 76);
+			this.labelLine.Name = "labelLine";
+			this.labelLine.Size = new System.Drawing.Size(244, 3);
+			this.labelLine.TabIndex = 5;
+			// 
+			// textBoxName
+			// 
+			this.textBoxName.Location = new System.Drawing.Point(92, 119);
+			this.textBoxName.Multiline = true;
+			this.textBoxName.Name = "textBoxName";
+			this.textBoxName.ReadOnly = true;
+			this.textBoxName.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxName.Size = new System.Drawing.Size(162, 50);
+			this.textBoxName.TabIndex = 3;
+			// 
+			// textBoxAddress
+			// 
+			this.textBoxAddress.Location = new System.Drawing.Point(92, 179);
+			this.textBoxAddress.Multiline = true;
+			this.textBoxAddress.Name = "textBoxAddress";
+			this.textBoxAddress.ReadOnly = true;
+			this.textBoxAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxAddress.Size = new System.Drawing.Size(162, 50);
+			this.textBoxAddress.TabIndex = 4;
+			// 
+			// labelName
+			// 
+			this.labelName.Location = new System.Drawing.Point(14, 116);
+			this.labelName.Name = "labelName";
+			this.labelName.Size = new System.Drawing.Size(72, 23);
+			this.labelName.TabIndex = 6;
+			// 
+			// labelAddress
+			// 
+			this.labelAddress.Location = new System.Drawing.Point(14, 176);
+			this.labelAddress.Name = "labelAddress";
+			this.labelAddress.Size = new System.Drawing.Size(72, 23);
+			this.labelAddress.TabIndex = 7;
+			// 
+			// labelValid
+			// 
+			this.labelValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+			this.labelValid.ForeColor = System.Drawing.Color.White;
+			this.labelValid.Location = new System.Drawing.Point(14, 89);
+			this.labelValid.Name = "labelValid";
+			this.labelValid.Size = new System.Drawing.Size(240, 23);
+			this.labelValid.TabIndex = 9;
+			this.labelValid.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// MainForm
 			// 
-			this.AcceptButton = this.buttonDownloadInfo;
+			this.AcceptButton = this.buttonValidate;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoSize = true;
-			this.ClientSize = new System.Drawing.Size(230, 107);
-			this.Controls.Add(this.splitContainer);
+			this.ClientSize = new System.Drawing.Size(273, 242);
+			this.Controls.Add(this.labelValid);
+			this.Controls.Add(this.labelAddress);
+			this.Controls.Add(this.labelName);
+			this.Controls.Add(this.textBoxAddress);
+			this.Controls.Add(this.textBoxName);
+			this.Controls.Add(this.labelLine);
+			this.Controls.Add(this.buttonValidate);
+			this.Controls.Add(this.textBoxVatID);
+			this.Controls.Add(this.comboBoxCountry);
+			this.Controls.Add(this.menuStripMain);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStripMain;
 			this.MaximizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(236, 135);
 			this.Name = "MainForm";
 			this.Text = "Vatlidator";
 			this.Load += new System.EventHandler(this.MainFormLoad);
-			this.splitContainer.Panel1.ResumeLayout(false);
-			this.splitContainer.Panel1.PerformLayout();
-			this.splitContainer.Panel2.ResumeLayout(false);
-			this.splitContainer.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxInsert)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxValid)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxInvalid)).EndInit();
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormFormClosed);
 			this.menuStripMain.ResumeLayout(false);
 			this.menuStripMain.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
-		private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem greekToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.SplitContainer splitContainer;
-		private System.Windows.Forms.WebBrowser webBrowser;
 		private System.Windows.Forms.MenuStrip menuStripMain;
-		private System.Windows.Forms.Button buttonDownloadInfo;
-		private System.Windows.Forms.PictureBox pictureBoxInsert;
-		private System.Windows.Forms.PictureBox pictureBoxValid;
-		private System.Windows.Forms.PictureBox pictureBoxInvalid;
-		private System.Windows.Forms.Label labelValidation;
-		private System.Windows.Forms.TextBox textBoxVat;
+		private System.Windows.Forms.TextBox textBoxVatID;
+		private System.Windows.Forms.Button buttonValidate;
+		private System.Windows.Forms.TextBox textBoxName;
+		private System.Windows.Forms.TextBox textBoxAddress;
+		private System.Windows.Forms.Label labelName;
+		private System.Windows.Forms.Label labelAddress;
+		private System.Windows.Forms.Label labelValid;
+		private System.Windows.Forms.Label labelLine;
+		private System.Windows.Forms.ComboBox comboBoxCountry;
 	}
 }
